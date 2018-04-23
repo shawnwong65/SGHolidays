@@ -3,9 +3,12 @@ package com.example.a16022774.sgholidays;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,5 +47,17 @@ public class SecondActivity extends AppCompatActivity {
             holidayArrayList.add(new Holiday("Deepavali", "6 Nov 2018"));
             holidayArrayList.add(new Holiday("Christmas Day", "25 Dec 2018"));
         }
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Holiday selectedHoliday = holidayArrayList.get(position);
+
+                Toast.makeText(SecondActivity.this, selectedHoliday.getName()
+                                + " Date: " + selectedHoliday.getDate(),
+                        Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 }
